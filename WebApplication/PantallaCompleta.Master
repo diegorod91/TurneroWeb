@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PantallaCompleta.master.cs" Inherits="TurneroWeb.PantallaCompleta" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Turnero</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffd800; /* Tu amarillo */
+            font-family: Arial, sans-serif;
+            min-height: 100vh; /* Fuerza a ocupar el 100% del alto de pantalla */
+            display: flex;
+            flex-direction: column;
+        }
+        form#form1 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;    
+        }
+        .content {
+            width: 100%;
+            max-width: 500px; 
+            padding: 20px;
+        }
+    </style>
+    
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" />
+
+        <section class="content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </section>
+    </form>
+</body>
+</html>
