@@ -96,7 +96,7 @@
                         <thead>
                             <tr>
                                 <th>TURNO</th>
-                                <th>BOX</th>
+                                <th>PUESTO</th>
                             </tr>
                         </thead>
                         <tbody id="tbHistorial">
@@ -124,7 +124,7 @@
             // Suscripción al evento emitido desde C#
             hub.client.TurnoLlamado = function (codigo, box) {
                 $('#lblCodigoTV').text(codigo);
-                $('#lblBoxTV').text("BOX " + box);
+                $('#lblBoxTV').text("PUESTO " + box);
 
                 $('#contenedorPrincipal').addClass('parpadeo');
                 setTimeout(function () {
@@ -153,7 +153,7 @@
             for (var i = 1; i < historial.length; i++) {
                 html += "<tr>" +
                     "<td style='color:#ffd800;'>" + historial[i].codigo + "</td>" +
-                    "<td>BOX " + historial[i].box + "</td>" +
+                    "<td>PUESTO " + historial[i].box + "</td>" +
                     "</tr>";
             }
 
@@ -177,10 +177,14 @@
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.6);
 
-                var codigoHablado = codigo.split('').join('. ');
+                //var codigoHablado = codigo.split('').join('. ');
+                var codigoHablado = codigo.replace(/([A-Za-z])/g, '$1..')
+                                          .replace(/([0-9])/g,'$1.')
 
                 setTimeout(function () {
-                    var mensaje = new SpeechSynthesisUtterance(codigoHablado + ", pase al box " + box);
+                    //var mensaje = new SpeechSynthesisUtterance(codigoHablado + ", pase al puesto " + box);
+                    var mensaje = new SpeechSynthesisUtterance("Turno..." + codigoHablado + "... pase al puesto " + box);
+
                     mensaje.lang = 'e-AR';
                     mensaje.rate = 0.8;
                     window.speechSynthesis.speak(mensaje);
