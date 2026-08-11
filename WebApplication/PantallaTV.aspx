@@ -178,15 +178,15 @@
                 osc.stop(audioCtx.currentTime + 0.6);
 
                 //var codigoHablado = codigo.split('').join('. ');
-                var codigoHablado = codigo.replace(/([A-Za-z])/g, '$1..')
-                                          .replace(/([0-9])/g,'$1.')
+                var codigoHablado = codigo.replace(/([A-Za-z])/g, '.$1 ')
+                                          .replace(/([0-9])/g,'. $1') 
 
                 setTimeout(function () {
                     //var mensaje = new SpeechSynthesisUtterance(codigoHablado + ", pase al puesto " + box);
-                    var mensaje = new SpeechSynthesisUtterance("Turno..." + codigoHablado + "... pase al puesto " + box);
-
+                    var mensaje = new SpeechSynthesisUtterance( codigoHablado + "... pase al puesto " + box);
+                                        
                     mensaje.lang = 'e-AR';
-                    mensaje.rate = 0.8;
+                    mensaje.rate = 0.75;
                     window.speechSynthesis.speak(mensaje);
                 }, 700);
             } catch (e) {
